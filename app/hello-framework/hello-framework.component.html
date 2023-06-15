@@ -5,11 +5,10 @@
   Release new versions
 </button>
 
-<button mat-raised-button color="secondary" (click)="handleReleaseClick()">
-  Click me!!
-</button>
-
-<div>ff</div>
+<!-- Structural Directive -->
+<p>test works!</p>
+<div *ngIf="false">Display data</div>
+<p [showToolTip]="'Tips'">Hover over this paragraph to see the tooltip</p>
 
 <ul>
   <li *ngFor="let item of items">{{ item.name }} and {{ item.description }}</li>

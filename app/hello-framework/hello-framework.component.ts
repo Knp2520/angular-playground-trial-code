@@ -1,16 +1,22 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'hello-framework',
   styleUrls: ['./hello-framework.component.scss'],
   templateUrl: './hello-framework.component.html',
 })
+@Directive({
+  selector: '[showToolTip]',
+})
 export class HelloFrameworkComponent {
-  items: string[] = [
-    { name: 'Item 1', description: 'Description 1' },
-    { name: 'Item 2', description: 'Description 2' },
-    { name: 'Item 3', description: 'Description 3' },
-  ];
   @Input()
   name: string;
   @Input() hello: string;
@@ -22,9 +28,25 @@ export class HelloFrameworkComponent {
     console.log('Button clicked Release');
     this.release.emit();
   }
-  @Output() clickMe: EventEmitter<void> = new EventEmitter();
-  handleReleaseClick(): void {
-    console.log('Button clicked');
-    this.clickMe.emit();
+  @Input('showToolTip') toolTipText: string;
+
+  constructor(private el: ElementRef) {}
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.showToolTip();
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.hideToolTip();
+  }
+
+  private showToolTip() {
+    // Logic to display tooltip, e.g., using a tooltip library or custom implementation
+    console.log(this.toolTipText);
+  }
+  private hideToolTip() {
+    // Logic to hide tooltip
   }
 }
