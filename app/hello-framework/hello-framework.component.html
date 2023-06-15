@@ -1,0 +1,16 @@
+<h1>Hello {{ name }} {{ version }}!</h1>
+<h3>{{ hello }}</h3>
+
+<button mat-raised-button color="primary" (click)="handleReleaseVersion()">
+  Release new versions
+</button>
+
+<button mat-raised-button color="secondary" (click)="handleReleaseClick()">
+  Click me!!
+</button>
+
+<div>ff</div>
+
+<ul>
+  <li *ngFor="let item of items">{{ item.name }} and {{ item.description }}</li>
+</ul>
